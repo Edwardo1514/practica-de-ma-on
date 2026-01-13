@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasky - Sistema de Gestión de Tareas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+<body>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="logo">Tasky</div>
+            <nav>
+                <a href="#" class="nav-item active"><i class="material-icons">dashboard</i>Dashboard</a>
+                <a href="#" class="nav-item"><i class="material-icons">list_alt</i>Tasks</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header class="header">
+                <div class="search-bar">
+                    <i class="material-icons">search</i>
+                    <input type="text" id="search-input" placeholder="Search tasks">
+                </div>
+                <div class="header-actions">
+                    <button id="add-task-btn" class="add-task-btn">+ Add task</button>
+                </div>
+            </header>
+
+            <div class="controls-bar">
+                <div class="filter-group">
+                    <label for="filter-materia">Materia:</label>
+                    <select id="filter-materia">
+                        <option value="">Todas</option>
+                        <option value="UX Design">UX Design</option>
+                        <option value="Development">Development</option>
+                        <option value="Others">Otras</option>
+                    </select>
+                    <label for="filter-prioridad">Prioridad:</label>
+                    <select id="filter-prioridad">
+                        <option value="">Todas</option>
+                        <option value="High">Alta</option>
+                        <option value="Medium">Media</option>
+                        <option value="Low">Baja</option>
+                    </select>
+                </div>
+                
+                <div class="sort-group">
+                    <label for="sort-by">Ordenar por:</label>
+                    <select id="sort-by">
+                        <option value="fechaEntrega">Fecha de Entrega</option>
+                        <option value="prioridad">Prioridad</option>
+                        <option value="titulo">Título</option>
+                    </select>
+                    <button id="sort-direction-btn" data-direction="asc" title="Cambiar dirección de ordenamiento">
+                        <i class="material-icons">arrow_upward</i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="kanban-board">
+                <div class="column">
+                    <h3 class="column-header">In Progress (<span id="count-in-progress">0</span>)</h3>
+                    <div class="task-list" id="list-in-progress">
+                    </div>
+                </div>
+
+                <div class="column">
+                    <h3 class="column-header">Completed Task (<span id="count-completed">0</span>)</h3>
+                    <div class="task-list" id="list-completed">
+                    </div>
+                </div>
+
+                <div class="column">
+                    <h3 class="column-header">Over-Due (<span id="count-overdue">0</span>)</h3>
+                    <div class="task-list" id="list-overdue">
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="task-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2><span id="modal-title">Registrar Nueva Tarea</span></h2>
+            <form id="task-form">
+                <input type="hidden" id="task-id">
+                
+                <label for="titulo">Título:</label>
+                <input type="text" id="titulo" required>
+
+                <label for="descripcion">Descripción:</label>
+                <textarea id="descripcion" rows="3" required></textarea>
+
+                <label for="fechaEntrega">Fecha de Entrega:</label>
+                <input type="date" id="fechaEntrega" required>
+
+                <label for="materia">Materia:</label>
+                <input type="text" id="materia" required>
+
+                <label for="prioridad">Prioridad:</label>
+                <select id="prioridad" required>
+                    <option value="High">Alta</option>
+                    <option value="Medium" selected>Media</option>
+                    <option value="Low">Baja</option>
+                </select>
+
+                <label for="estado">Estado:</label>
+                <select id="estado" required>
+                    <option value="In Progress">En Progreso</option>
+                    <option value="Completed Task">Completada</option>
+                    <option value="Over-Due">Retrasada</option>
+                </select>
+
+                <button type="submit" id="save-task-btn">Guardar Tarea</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

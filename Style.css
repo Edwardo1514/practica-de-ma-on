@@ -1,0 +1,316 @@
+:root {
+    --color-primary: #5b50f7;
+    --color-bg: #f4f5f9;
+    --color-card-bg: #ffffff;
+    --color-text: #333333;
+    --color-high: #f06a6a;
+    --color-medium: #ffb84d;
+    --color-low: #6aa84f;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: var(--color-bg);
+    display: flex;
+    height: 100vh;
+}
+
+.app-container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: var(--color-card-bg);
+    padding: 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #777;
+}
+
+.nav-item.active {
+    background-color: var(--color-primary);
+    color: var(--color-card-bg);
+}
+
+.nav-item i {
+    margin-right: 10px;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-card-bg);
+    padding: 8px 15px;
+    border-radius: 8px;
+    width: 300px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    width: 100%;
+    margin-left: 10px;
+}
+
+.add-task-btn {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+/* Controles (Filtro y Ordenamiento) */
+.controls-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-card-bg);
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.filter-group, .sort-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.controls-bar label {
+    font-weight: bold;
+    color: var(--color-text);
+    font-size: 14px;
+}
+
+.controls-bar select {
+    padding: 5px 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+#sort-direction-btn {
+    background-color: #eee;
+    color: var(--color-text);
+    border: 1px solid #ccc;
+    padding: 5px 8px;
+    border-radius: 6px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+#sort-direction-btn i {
+    font-size: 18px;
+}
+
+/* Kanban Board */
+.kanban-board {
+    display: flex;
+    gap: 20px;
+}
+
+.column {
+    flex: 1;
+    min-width: 300px;
+}
+
+.column-header {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Task Card */
+.task-card {
+    background-color: var(--color-card-bg);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.task-title {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+.task-description {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 10px;
+    overflow: hidden;
+    max-height: 3em; 
+}
+
+.task-details {
+    cursor: pointer;
+}
+
+/* Tags */
+.tag {
+    font-size: 12px;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.tag.priority-High {
+    background-color: var(--color-high);
+    color: white;
+}
+.tag.priority-Medium {
+    background-color: var(--color-medium);
+    color: white;
+}
+.tag.priority-Low {
+    background-color: var(--color-low);
+    color: white;
+}
+
+.tag.date {
+    background-color: #e6e6fa;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.tag.materia {
+    background-color: #f1f1f1;
+    color: var(--color-text);
+}
+
+
+/* Modal */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.close-btn {
+    float: right;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#task-form input, #task-form textarea, #task-form select {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0 15px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#save-task-btn {
+    width: 100%;
+    background-color: var(--color-primary);
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+
+/* Responsividad */
+@media (max-width: 900px) {
+    .kanban-board {
+        flex-wrap: wrap;
+    }
+    .column {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+@media (max-width: 600px) {
+    .sidebar {
+        display: none;
+    }
+    .kanban-board {
+        flex-direction: column;
+    }
+    .column {
+        flex: 1 1 100%;
+    }
+    .header {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .search-bar {
+        width: 100%;
+    }
+    .controls-bar {
+        flex-direction: column;
+        gap: 10px;
+        align-items: flex-start;
+    }
+    .filter-group, .sort-group {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
